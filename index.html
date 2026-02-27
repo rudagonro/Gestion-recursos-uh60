@@ -13,6 +13,7 @@ mermaid.initialize({
 </script>
 
 <style>
+
 body{
   margin:0;
   font-family:"Segoe UI", Arial, sans-serif;
@@ -29,7 +30,7 @@ header{
 
 header h1{
   margin:0;
-  font-size:24px;
+  font-size:22px;
   text-transform:uppercase;
   letter-spacing:0.5px;
 }
@@ -88,15 +89,47 @@ footer{
   font-size:13px;
   margin-top:30px;
 }
+
+/* ============================= */
+/* CONFIGURACIÓN PARA IMPRESIÓN  */
+/* ============================= */
+
+@media print {
+
+  body{
+    background:white;
+  }
+
+  header{
+    padding:15px;
+  }
+
+  .container{
+    box-shadow:none;
+    margin:0;
+    padding:10px;
+  }
+
+  footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+  }
+
+  .badge{
+    border:1px solid #000;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Modelo Conceptual – Gestión de Recursos</h1>
+<h1>Gestión de Recursos</h1>
 <h2>Equipo UH-60 Black Hawk</h2>
-<h3>SIP – Anexo L (Gestión de Recursos)</h3>
+<h3>Anexo L </h3>
 </header>
 
 <div class="container">
@@ -104,9 +137,9 @@ footer{
 <div class="badge">MODELO CONCEPTUAL – SIP</div>
 
 <p class="intro">
-Este modelo conceptual describe la secuencia lógica de identificación, consolidación,
-validación, priorización, financiación, ejecución y retroalimentación
-para la gestión de recursos del sostenimiento del UH-60,
+Este modelo conceptual describe la secuencia lógica de identificación,
+consolidación, validación, priorización, financiación, ejecución y
+retroalimentación para la gestión de recursos del sostenimiento del UH-60,
 en el marco del SIP. Sirve como referencia estratégica para la alineación
 de actores y decisiones.
 </p>
@@ -117,7 +150,7 @@ de actores y decisiones.
 flowchart TD
 
 A[Inicio del Proceso]:::inicio --> B[Necesidades Técnicas y Logísticas]:::proceso
-B --> C[Consolidación DAVAA & Brigada 32]:::proceso
+B --> C[Consolidación DAVAA & BRIAV32]:::proceso
 C --> D[Validación Técnica & Financiera]:::proceso
 D --> E{¿Viable Financieramente?}:::decision
 
@@ -148,7 +181,7 @@ linkStyle 11 stroke:#c00000,stroke-width:3px;
 </div>
 
 <footer>
-Brigada de Aviación del Ejército No. 32 – Planeación Estratégica | Actualizado 2026
+Brigada de Aviación Ejército No. 32 – Planeación Estratégica | Actualizado 2026
 </footer>
 
 </body>
