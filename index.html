@@ -1,25 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Gestión de Recursos UH-60</title>
+  <title>Modelo Gestión Recursos UH-60</title>
+
+  <!-- Mermaid -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: true });
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#1f4e79",
+        primaryTextColor: "#ffffff",
+        primaryBorderColor: "#0d2d4d",
+        lineColor: "#1f4e79",
+        secondaryColor: "#44546a",
+        tertiaryColor: "#e7eef5"
+      }
+    });
   </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f4f6f8;
+      color: #1a1a1a;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 25px;
       text-align: center;
-      margin: 40px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header h2 {
+      margin: 5px 0;
+      font-weight: normal;
+      font-size: 18px;
+    }
+
+    header h3 {
+      margin: 5px 0;
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f4e79;
+      color: white;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<h1>MODELO DE GESTIÓN DE RECURSOS</h1>
-<h2>Sistema UH-60</h2>
-<h3>Ejército Nacional de Colombia</h3>
+<header>
+  <h1>MODELO DE GESTIÓN DE RECURSOS</h1>
+  <h2>Sistema UH-60</h2>
+  <h3>Ejército Nacional de Colombia</h3>
+</header>
+
+<div class="container">
 
 <div class="mermaid">
 flowchart TD
@@ -40,6 +109,13 @@ J --> K[Presentación CENAC]
 K --> L[Monitoreo & Retroalimentación]
 L --> B
 </div>
+
+</div>
+
+<footer>
+  Dirección de Sostenimiento – Modelo Estratégico  
+  | Actualizado 2026
+</footer>
 
 </body>
 </html>
