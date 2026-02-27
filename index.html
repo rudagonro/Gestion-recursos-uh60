@@ -2,111 +2,56 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Modelo Conceptual – Gestión de Recursos UH-60</title>
+<title>Gestión de Recursos – UH-60</title>
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
 mermaid.initialize({
   startOnLoad: true,
-  theme: "base"
+  theme: "base",
+  flowchart: { curve: "basis" }
 });
 </script>
 
 <style>
-
 :root{
   --azul:#1f4e79;
   --azul2:#2e75b6;
+  --verde:#2e7d32;
+  --verde2:#70ad47;
+  --amarillo:#ffc000;
+  --naranja:#c97a1c;
   --gris:#f4f6f8;
   --texto:#1a1a1a;
 }
 
-body{
-  margin:0;
-  font-family:"Segoe UI", Arial, sans-serif;
-  background:var(--gris);
-  color:var(--texto);
-}
+body{ margin:0; font-family:"Segoe UI", Arial, sans-serif; background:var(--gris); color:var(--texto); }
 
-/* ============================= */
-/* CARÁTULA INSTITUCIONAL        */
-/* ============================= */
-
-.cover{
-  max-width:1100px;
-  margin:30px auto;
-  background:#fff;
-  border-radius:10px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.1);
-  overflow:hidden;
-}
-
-.cover-top{
+header{
   background:var(--azul);
-  color:#fff;
-  padding:26px 20px;
+  color:white;
+  padding:22px 18px;
   text-align:center;
 }
+header h1{ margin:0; font-size:22px; letter-spacing:0.5px; text-transform:uppercase; }
+header h2{ margin:8px 0 0; font-size:16px; font-weight:600; opacity:0.95; }
 
-.cover-top h1{
-  margin:0;
-  font-size:22px;
-  text-transform:uppercase;
-  letter-spacing:0.5px;
+.container{
+  max-width:1100px;
+  margin:26px auto;
+  padding:22px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.10);
 }
 
-.cover-top h2{
-  margin:8px 0 0 0;
-  font-size:18px;
-  font-weight:600;
+.top-row{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
 }
-
-.cover-top h3{
-  margin:6px 0 0 0;
-  font-size:14px;
-  font-weight:normal;
-}
-
-.cover-body{
-  display:grid;
-  grid-template-columns: 180px 1fr;
-  gap:20px;
-  padding:25px;
-  align-items:start;
-}
-
-.seal{
-  text-align:center;
-}
-
-.seal img{
-  max-width:160px;
-  height:auto;
-}
-
-.meta{
-  border:1px solid #e5e5e5;
-  border-radius:8px;
-  padding:15px;
-  background:#fafafa;
-}
-
-.meta div{
-  margin-bottom:8px;
-  font-size:14px;
-}
-
-.meta strong{
-  color:#333;
-}
-
-.cover-note{
-  padding:0 25px 25px 25px;
-  font-size:14px;
-  line-height:1.6;
-  text-align:justify;
-}
-
 .badge{
   display:inline-block;
   font-size:12px;
@@ -114,87 +59,32 @@ body{
   padding:6px 10px;
   border-radius:8px;
   background:#fff;
-  margin-bottom:10px;
 }
-
-/* ============================= */
-/* CONTENIDO DEL FLUJOGRAMA      */
-/* ============================= */
-
-.container{
-  max-width:1100px;
-  margin:30px auto;
-  padding:25px;
-  background:white;
-  border-radius:10px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.1);
-}
+.seal img{ height:60px; width:auto; opacity:0.95; }
 
 .section-title{
   text-align:center;
-  font-weight:bold;
-  margin-bottom:20px;
+  font-weight:800;
+  margin:6px 0 18px 0;
   text-transform:uppercase;
   color:var(--azul);
+  letter-spacing:0.3px;
 }
-
-/* ============================= */
-/* PIE DE PÁGINA                 */
-/* ============================= */
 
 footer{
   background:var(--azul);
   color:white;
   text-align:center;
-  padding:18px;
+  padding:16px;
   font-size:13px;
-  margin-top:30px;
+  margin-top:26px;
 }
 
-/* ============================= */
-/* IMPRESIÓN (PDF)               */
-/* ============================= */
-
-@media print {
-
-  body{
-    background:white;
-  }
-
-  .cover, .container{
-    box-shadow:none;
-    margin:0;
-    border-radius:0;
-  }
-
-  .page-break{
-    page-break-after:always;
-  }
-
-  footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
-  }
-
-  body::before{
-    content:"SIP – MODELO CONCEPTUAL";
-    position:fixed;
-    top:45%;
-    left:50%;
-    transform:translate(-50%,-50%) rotate(-25deg);
-    font-size:50px;
-    color:rgba(31,78,121,0.08);
-    z-index:0;
-  }
-
-}
-
-/* Responsive */
-@media (max-width:768px){
-  .cover-body{
-    grid-template-columns: 1fr;
-  }
+/* Impresión PDF */
+@media print{
+  body{ background:#fff; }
+  .container{ box-shadow:none; margin:0; border-radius:0; }
+  footer{ position:fixed; bottom:0; width:100%; }
 }
 
 </style>
@@ -202,91 +92,88 @@ footer{
 
 <body>
 
-<!-- ============================= -->
-<!-- CARÁTULA                      -->
-<!-- ============================= -->
-
-<section class="cover page-break">
-
-  <div class="cover-top">
-    <h1>Gestión de Recursos</h1>
-    <h2>Equipo UH-60 Black Hawk</h2>
-    <h3>Anexo L</h3>
-  </div>
-
-  <div class="cover-body">
-
-    <div class="seal">
-      <!-- IMPORTANTE: El archivo debe llamarse exactamente escudo.png -->
-      <img src="escudo.png" alt="Escudo Institucional">
-    </div>
-
-    <div class="meta">
-      <div><strong>Unidad:</strong> Brigada de Aviación del Ejército No. 32</div>
-      <div><strong>Dependencia:</strong> Planeación Estratégica</div>
-      <div><strong>Documento:</strong> SIP-UH60-ANXL-GR-001</div>
-      <div><strong>Versión:</strong> 2.0</div>
-      <div><strong>Estado:</strong> Modelo Conceptual</div>
-      <div><strong>Fecha:</strong> 2026</div>
-    </div>
-
-  </div>
-
-  <div class="cover-note">
-    <span class="badge">MODELO CONCEPTUAL – SIP</span>
-    <p>
-    Este modelo conceptual describe la secuencia lógica de identificación,
-    consolidación, validación, priorización, financiación, ejecución y
-    retroalimentación para la gestión de recursos del sostenimiento del UH-60,
-    en el marco del SIP. Sirve como referencia estratégica para la alineación
-    de actores y decisiones.
-    </p>
-  </div>
-
-</section>
-
-<!-- ============================= -->
-<!-- FLUJOGRAMA                    -->
-<!-- ============================= -->
+<header>
+  <h1>Gestión de Recursos – UH-60</h1>
+  <h2>Modelo Conceptual (SIP – Anexo L)</h2>
+</header>
 
 <div class="container">
+  <div class="top-row">
+    <span class="badge">MODELO CONCEPTUAL – SIP</span>
+    <div class="seal">
+      <img src="escudo.png" alt="Escudo">
+    </div>
+  </div>
 
-<div class="section-title">Flujograma Estratégico de Sostenimiento</div>
+  <div class="section-title">Flujograma Estratégico</div>
 
-<div class="mermaid">
+  <div class="mermaid">
 flowchart TD
 
-A[Inicio del Proceso]:::inicio --> B[Necesidades Técnicas y Logísticas]:::proceso
-B --> C[Consolidación DAVAA & BRIAV32]:::proceso
-C --> D[Validación Técnica & Financiera]:::proceso
-D --> E{¿Viable Financieramente?}:::decision
+%% ======================
+%% NODOS PRINCIPALES
+%% ======================
 
-E -->|Sí| G[Priorización]:::aprobado
-G --> H[Definición Tipo de Financiamiento]:::proceso
-H --> I[Generación Anteproyecto]:::proceso
-I --> J[Revisión DPC]:::proceso
-J --> K[Presentación CENAC]:::proceso
-K --> L[Monitoreo & Retroalimentación]:::control
+T["GESTIÓN DE RECURSOS – UH-60"]:::banner --> A([Inicio del Proceso]):::inicio
 
-E -->|No| F[Ajustar / Reprogramar]:::ajuste
+A --> B["Necesidades de Unidades Técnicas y Logísticas<br/><br/>• Mantenimiento Programado<br/>• Componentes a TBO<br/>• Repuestos Críticos<br/>• Servicios de Reparación<br/>• Requerimientos de Ingeniería<br/>• Entrenamiento & Herramientas"]:::caja
+
+B --> C["Consolidación de Requerimientos<br/>DAVAA & Brigada 32"]:::azulFuerte
+
+C --> D1["Validación Técnica & Logística"]:::azulFuerte
+C --> D2["Validación Financiera & CCV"]:::verdeFuerte
+
+D1 --> E{¿Viable Financieramente?}:::decision
+D2 --> E
+
+E -->|No| F["Ajustar / Reprogramar"]:::amarillo
 F -.-> B
 
-classDef inicio fill:#1f4e79,color:#ffffff,stroke:#0d2d4d,stroke-width:2px;
-classDef proceso fill:#2e75b6,color:#ffffff,stroke:#1f4e79;
-classDef decision fill:#c00000,color:#ffffff,stroke:#7a0000,stroke-width:2px;
-classDef ajuste fill:#ffc000,color:#000000,stroke:#d4a000,stroke-width:2px;
-classDef aprobado fill:#70ad47,color:#ffffff,stroke:#4f8a10,stroke-width:2px;
-classDef control fill:#44546a,color:#ffffff,stroke:#2f3b44,stroke-width:2px;
+E -->|Sí| G["Priorizar"]:::verde
+G --> H["Priorización<br/>Lista de Necesidades UH-60"]:::naranja
 
-linkStyle 4 stroke:#00a651,stroke-width:3px;
-linkStyle 11 stroke:#c00000,stroke-width:3px;
+H --> I["Definición del Tipo & Financiamiento"]:::grisCaja
+I --> J{¿Anual o Plurianual?}:::decision2
 
-</div>
+J -->|Consumibles & Rotación| K["Consumibles & Rotación"]:::azulFuerte
+J -->|Mayores & Críticos| L["Mayores & Críticos"]:::verdeFuerte
 
+K --> M["Generación del Anteproyecto"]:::grisCaja
+L --> M
+
+M --> N["Revisión DPC"]:::grisCaja
+
+N --> O["Presentación a CENAC<br/><br/>• Publicación<br/>• Evaluación<br/>• Adjudicación<br/>• Supervisión<br/>• Recepción de Bienes"]:::caja
+
+O --> P["Monitoreo & Retroalimentación<br/><br/>• Informes Mensuales<br/>• Alertas & Retrasos<br/>• Ajustes TRM<br/>• Reprogramaciones"]:::control
+
+P -.-> B
+
+%% ======================
+%% ESTILOS (SIMILAR A IMAGEN)
+%% ======================
+
+classDef banner fill:#1f4e79,color:#fff,stroke:#0d2d4d,stroke-width:2px;
+classDef inicio fill:#e9eef5,color:#0d2d4d,stroke:#b8c7d9,stroke-width:2px;
+classDef caja fill:#ffffff,color:#1a1a1a,stroke:#bfc7cf,stroke-width:2px;
+classDef azulFuerte fill:#2e75b6,color:#fff,stroke:#1f4e79,stroke-width:2px;
+classDef verdeFuerte fill:#2e7d32,color:#fff,stroke:#1f5a21,stroke-width:2px;
+classDef decision fill:#44546a,color:#fff,stroke:#2f3b44,stroke-width:2px;
+classDef decision2 fill:#44546a,color:#fff,stroke:#2f3b44,stroke-width:2px;
+classDef amarillo fill:#ffc000,color:#000,stroke:#d4a000,stroke-width:2px;
+classDef verde fill:#70ad47,color:#fff,stroke:#4f8a10,stroke-width:2px;
+classDef naranja fill:#c97a1c,color:#fff,stroke:#8a4f0f,stroke-width:2px;
+classDef grisCaja fill:#eef2f6,color:#1a1a1a,stroke:#c8d2dc,stroke-width:2px;
+classDef control fill:#1f4e79,color:#fff,stroke:#0d2d4d,stroke-width:2px;
+
+%% Colorear flechas Sí/No (depende del orden; aquí funciona normalmente)
+linkStyle 6 stroke:#c00000,stroke-width:3px;
+linkStyle 8 stroke:#00a651,stroke-width:3px;
+  </div>
 </div>
 
 <footer>
-Brigada de Aviación Ejército No. 32 – Planeación Estratégica | Marzo 2026
+Brigada de Aviación del Ejército No. 32 – Planeación Estratégica | Actualizado 2026
 </footer>
 
 </body>
