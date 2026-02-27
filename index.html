@@ -1,137 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Modelo Gestión Recursos UH-60</title>
+<meta charset="UTF-8">
+<title>Modelo Conceptual – Gestión de Recursos UH-60</title>
 
-  <!-- Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ 
-      startOnLoad: true,
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#1f4e79",
-        primaryTextColor: "#ffffff",
-        primaryBorderColor: "#0d2d4d",
-        lineColor: "#1f4e79",
-        secondaryColor: "#44546a",
-        tertiaryColor: "#e7eef5"
-      }
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: "base"
+});
+</script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #f4f6f8;
-      color: #1a1a1a;
-    }
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:#f4f6f8;
+  color:#1a1a1a;
+}
 
-    header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 25px;
-      text-align: center;
-    }
+header{
+  background:#1f4e79;
+  color:white;
+  padding:28px 20px;
+  text-align:center;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: 1px;
-    }
+header h1{
+  margin:0;
+  font-size:24px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
 
-    header h2 {
-      margin: 5px 0;
-      font-weight: normal;
-      font-size: 18px;
-    }
+header h2{
+  margin:8px 0 0 0;
+  font-size:18px;
+  font-weight:600;
+}
 
-    header h3 {
-      margin: 5px 0;
-      font-weight: normal;
-      font-size: 16px;
-    }
+header h3{
+  margin:6px 0 0 0;
+  font-size:14px;
+  font-weight:normal;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
+.container{
+  max-width:1100px;
+  margin:30px auto;
+  padding:25px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.1);
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1f4e79;
-      color: white;
-      font-size: 14px;
-      margin-top: 40px;
-    }
+.badge{
+  text-align:right;
+  margin-bottom:10px;
+  font-size:12px;
+  border:1px solid #1f4e79;
+  padding:6px 10px;
+  border-radius:8px;
+  display:inline-block;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        margin: 10px;
-      }
-    }
-  </style>
+.intro{
+  text-align:justify;
+  font-size:15px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.section-title{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:20px;
+  text-transform:uppercase;
+  color:#1f4e79;
+}
+
+footer{
+  background:#1f4e79;
+  color:white;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  margin-top:30px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>MODELO DE GESTIÓN DE RECURSOS</h1>
-  <h2>EQUIPO UH-60 BLACKHAWK</h2>
-  <h3>Ejército Nacional de Colombia</h3>
+<h1>Modelo Conceptual – Gestión de Recursos</h1>
+<h2>Equipo UH-60 Black Hawk</h2>
+<h3>SIP – Anexo L (Gestión de Recursos)</h3>
 </header>
 
 <div class="container">
 
+<div class="badge">MODELO CONCEPTUAL – SIP</div>
+
+<p class="intro">
+Este modelo conceptual describe la secuencia lógica de identificación, consolidación,
+validación, priorización, financiación, ejecución y retroalimentación
+para la gestión de recursos del sostenimiento del UH-60,
+en el marco del SIP. Sirve como referencia estratégica para la alineación
+de actores y decisiones.
+</p>
+
+<div class="section-title">Flujograma Estratégico de Sostenimiento</div>
+
 <div class="mermaid">
 flowchart TD
 
-A[Inicio del Proceso]:::inicio
-A --> B[Necesidades Técnicas y Logísticas]:::proceso
+A[Inicio del Proceso]:::inicio --> B[Necesidades Técnicas y Logísticas]:::proceso
 B --> C[Consolidación DAVAA & Brigada 32]:::proceso
 C --> D[Validación Técnica & Financiera]:::proceso
 D --> E{¿Viable Financieramente?}:::decision
 
-%% RAMA NO (ROJO - HACIA ABAJO)
-E -->|No| F[Ajustar / Reprogramar]:::ajuste
-linkStyle 4 stroke:#c00000,stroke-width:3px
-
-F --> B
-
-%% RAMA SI (VERDE - HACIA ABAJO)
 E -->|Sí| G[Priorización]:::aprobado
-linkStyle 6 stroke:#00a651,stroke-width:3px
-
 G --> H[Definición Tipo de Financiamiento]:::proceso
 H --> I[Generación Anteproyecto]:::proceso
 I --> J[Revisión DPC]:::proceso
 J --> K[Presentación CENAC]:::proceso
 K --> L[Monitoreo & Retroalimentación]:::control
-L --> B
 
-%% COLORES INSTITUCIONALES
+E -->|No| F[Ajustar / Reprogramar]:::ajuste
+F -.-> B
 
+%% Colores institucionales
 classDef inicio fill:#1f4e79,color:#ffffff,stroke:#0d2d4d,stroke-width:2px;
-classDef proceso fill:#2e75b6,color:#ffffff,stroke:#1f4e79,stroke-width:1px;
+classDef proceso fill:#2e75b6,color:#ffffff,stroke:#1f4e79;
 classDef decision fill:#c00000,color:#ffffff,stroke:#7a0000,stroke-width:2px;
 classDef ajuste fill:#ffc000,color:#000000,stroke:#d4a000,stroke-width:2px;
 classDef aprobado fill:#70ad47,color:#ffffff,stroke:#4f8a10,stroke-width:2px;
 classDef control fill:#44546a,color:#ffffff,stroke:#2f3b44,stroke-width:2px;
+
+%% Flechas coloreadas
+linkStyle 4 stroke:#00a651,stroke-width:3px;
+linkStyle 11 stroke:#c00000,stroke-width:3px;
 
 </div>
 
 </div>
 
 <footer>
-  Brigada de Aviación Ejército No. 32 – Planeación Estratégica  
-  | Actualizado 2026
+Brigada de Aviación del Ejército No. 32 – Planeación Estratégica | Actualizado 2026
 </footer>
 
 </body>
