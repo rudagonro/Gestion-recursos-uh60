@@ -1,1 +1,324 @@
-<a href="dashboard.html">Ver Dashboard SIP</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard SIP – UH-60</title>
+
+<style>
+:root{
+  --azul:#1f4e79; --azul2:#2e75b6; --gris:#f4f6f8; --borde:#e6e6e6;
+  --verde:#2e7d32; --amarillo:#ffc000; --rojo:#c00000; --naranja:#c97a1c;
+}
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:"Segoe UI",Arial,sans-serif; background:var(--gris); color:#1a1a1a; }
+
+header{
+  background:var(--azul); color:#fff; padding:16px 14px;
+}
+.header-row{
+  max-width:1200px; margin:0 auto; display:flex; gap:12px; align-items:center; justify-content:space-between;
+}
+header h1{ margin:0; font-size:17px; text-transform:uppercase; letter-spacing:.4px; }
+header .sub{ margin-top:6px; font-size:13px; opacity:.95; }
+.nav{ display:flex; gap:10px; align-items:center; }
+.nav a{
+  color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,.35);
+  padding:8px 10px; border-radius:10px; font-size:13px;
+}
+.nav a:hover{ background:rgba(255,255,255,.12); }
+
+.container{ max-width:1200px; margin:16px auto; padding:0 14px 16px; }
+
+.top{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+  margin:10px 0 12px;
+}
+.badge{
+  display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--borde); background:#fff;
+}
+.seal img{ height:54px; width:auto; }
+
+.toolbar{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+  margin:10px 0 12px;
+}
+.pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pill{
+  border:1px solid var(--borde); background:#fff; padding:8px 10px; border-radius:999px;
+  font-size:13px; cursor:pointer; user-select:none;
+}
+.pill.active{ border-color:var(--azul); box-shadow:0 0 0 2px rgba(31,78,121,.12); }
+
+.search{ display:flex; gap:8px; align-items:center; }
+.search input{
+  width:240px; max-width:70vw; padding:10px 12px; border:1px solid var(--borde); border-radius:10px; outline:none;
+}
+.search select{
+  padding:10px 12px; border:1px solid var(--borde); border-radius:10px; background:#fff;
+}
+
+.grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:12px; }
+.card{
+  background:#fff; border:1px solid var(--borde); border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06); padding:14px;
+}
+.kpi{ grid-column:span 3; }
+@media(max-width:1000px){ .kpi{ grid-column:span 6; } }
+@media(max-width:560px){ .kpi{ grid-column:span 12; } }
+.kpi .label{ font-size:12px; opacity:.85; }
+.kpi .value{ font-size:26px; font-weight:800; margin-top:6px; }
+.kpi .note{ font-size:12px; opacity:.8; margin-top:6px; }
+
+.section{ grid-column:span 12; }
+.section-title{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
+.section-title h2{ margin:0; font-size:13px; text-transform:uppercase; letter-spacing:.35px; color:var(--azul); }
+.small{ font-size:12px; opacity:.85; }
+
+.table-wrap{ overflow:auto; }
+table{ width:100%; border-collapse:separate; border-spacing:0; min-width:820px; }
+th,td{ padding:10px; border-bottom:1px solid var(--borde); text-align:left; font-size:13px; vertical-align:top; }
+th{ position:sticky; top:0; background:#fff; z-index:1; font-size:12px; text-transform:uppercase; letter-spacing:.25px; color:#3b3b3b; }
+tr:hover td{ background:#fafafa; }
+
+.b{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid var(--borde); }
+.b-blue{ background:rgba(46,117,182,.10); border-color:rgba(46,117,182,.35); }
+.b-green{ background:rgba(46,125,50,.10); border-color:rgba(46,125,50,.35); }
+.b-yellow{ background:rgba(255,192,0,.18); border-color:rgba(255,192,0,.55); }
+.b-red{ background:rgba(192,0,0,.10); border-color:rgba(192,0,0,.30); }
+.b-orange{ background:rgba(201,122,28,.12); border-color:rgba(201,122,28,.45); }
+
+footer{ text-align:center; padding:14px; color:#fff; background:var(--azul); font-size:13px; margin-top:12px; }
+
+@media print{
+  header, .toolbar, .nav, footer { display:none !important; }
+  body{ background:#fff; }
+  .card{ box-shadow:none; }
+  table{ min-width:unset; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-row">
+    <div>
+      <h1>Dashboard SIP – Gestión de Recursos (UH-60)</h1>
+      <div class="sub">Brigada de Aviación del Ejército No. 32 – Planeación Estratégica | Nivel 1 (Simulado)</div>
+    </div>
+    <div class="nav">
+      <a href="index.html">Modelo Conceptual</a>
+      <a href="#" onclick="window.print();return false;">Imprimir PDF</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="top">
+    <span class="badge">SIP – Anexo L (Gestión de Recursos) | Tablero Simulado</span>
+    <div class="seal"><img src="escudo.png" alt="Escudo"></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="pills" id="phasePills"></div>
+    <div class="search">
+      <input id="q" type="text" placeholder="Buscar (ID, fase, estado, responsable)..." />
+      <select id="sort">
+        <option value="risk_desc">Orden: Riesgo (alto→bajo)</option>
+        <option value="days_desc">Orden: Días en fase (alto→bajo)</option>
+        <option value="cost_desc">Orden: Costo (alto→bajo)</option>
+        <option value="id_asc">Orden: ID (A→Z)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid" id="kpiGrid"></div>
+
+  <div class="grid">
+    <div class="card section">
+      <div class="section-title">
+        <h2>Portafolio de requerimientos (simulado)</h2>
+        <div class="small" id="summary"></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Fase</th><th>Estado</th><th>Tipo</th><th>Criticidad</th>
+              <th>Responsable</th><th>Días</th><th>Costo</th><th>Riesgo</th><th>Notas</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card section">
+      <div class="section-title">
+        <h2>Alertas (reglas simples)</h2>
+        <div class="small">Días altos / Riesgo alto / Ajustar-Reprogramar.</div>
+      </div>
+      <div id="alerts"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Brigada de Aviación del Ejército No. 32 – Planeación Estratégica | Actualizado 2026</footer>
+
+<script>
+const data = [
+  { id:"UH60-001", fase:"Necesidades", estado:"En elaboración", tipo:"Repuesto", criticidad:"Alta", responsable:"U. Técnica", dias:12, costo:185000, riesgo:3, notas:"TBO próximo. Validar stock." },
+  { id:"UH60-002", fase:"Consolidación", estado:"Consolidado", tipo:"Servicio", criticidad:"Media", responsable:"Brigada 32", dias:8, costo:95000, riesgo:2, notas:"Incluido en paquete trimestral." },
+  { id:"UH60-003", fase:"Validación", estado:"En CCV", tipo:"Ingeniería", criticidad:"Alta", responsable:"DAVAA", dias:19, costo:220000, riesgo:4, notas:"Impacto TRM por importar." },
+  { id:"UH60-004", fase:"Decisión", estado:"Ajustar / Reprogramar", tipo:"Herramienta", criticidad:"Baja", responsable:"Financiero", dias:25, costo:45000, riesgo:3, notas:"Reprogramar a Q3." },
+  { id:"UH60-005", fase:"Priorización", estado:"Aprobado", tipo:"Repuesto", criticidad:"Alta", responsable:"Brigada 32", dias:6, costo:310000, riesgo:4, notas:"Elemento crítico para disponibilidad." },
+  { id:"UH60-006", fase:"Financiamiento", estado:"Plurianual", tipo:"Servicio", criticidad:"Alta", responsable:"Planeación", dias:14, costo:780000, riesgo:5, notas:"Contrato mayor. Preparar anteproyecto." },
+  { id:"UH60-007", fase:"Anteproyecto", estado:"En revisión", tipo:"Servicio", criticidad:"Media", responsable:"DPC", dias:11, costo:260000, riesgo:3, notas:"Ajustar especificaciones." },
+  { id:"UH60-008", fase:"CENAC", estado:"En evaluación", tipo:"Repuesto", criticidad:"Alta", responsable:"CENAC", dias:21, costo:540000, riesgo:4, notas:"Oferentes limitados." },
+  { id:"UH60-009", fase:"CENAC", estado:"Adjudicado", tipo:"Servicio", criticidad:"Media", responsable:"CENAC", dias:9, costo:420000, riesgo:2, notas:"Pendiente acta de inicio." },
+  { id:"UH60-010", fase:"Monitoreo", estado:"En ejecución", tipo:"Servicio", criticidad:"Alta", responsable:"Supervisión", dias:17, costo:610000, riesgo:4, notas:"Alertas por cronograma." },
+];
+
+const phases = ["Todos","Necesidades","Consolidación","Validación","Decisión","Priorización","Financiamiento","Anteproyecto","CENAC","Monitoreo"];
+let selectedPhase = "Todos";
+
+function badgeEstado(estado){
+  const s = (estado||"").toLowerCase();
+  if (s.includes("ajust") || s.includes("reprogram")) return "b b-yellow";
+  if (s.includes("aprob") || s.includes("adjud")) return "b b-green";
+  if (s.includes("ejec") || s.includes("evalu")) return "b b-blue";
+  return "b";
+}
+function badgeFase(fase){
+  if (fase==="Validación") return "b b-green";
+  if (fase==="Priorización") return "b b-orange";
+  if (fase==="Decisión") return "b b-red";
+  return "b b-blue";
+}
+function badgeRiesgo(r){
+  if (r>=4) return "b b-red";
+  if (r===3) return "b b-yellow";
+  return "b b-green";
+}
+
+function renderPills(){
+  const holder = document.getElementById("phasePills");
+  holder.innerHTML = "";
+  phases.forEach(p=>{
+    const el = document.createElement("div");
+    el.className = "pill" + (selectedPhase===p ? " active":"");
+    el.textContent = p;
+    el.onclick = ()=>{ selectedPhase=p; render(); };
+    holder.appendChild(el);
+  });
+}
+
+function applyFilters(){
+  const q = (document.getElementById("q").value || "").toLowerCase().trim();
+  let out = [...data];
+
+  if (selectedPhase !== "Todos") out = out.filter(x=>x.fase===selectedPhase);
+
+  if (q){
+    out = out.filter(x=>{
+      const blob = `${x.id} ${x.fase} ${x.estado} ${x.tipo} ${x.criticidad} ${x.responsable} ${x.notas}`.toLowerCase();
+      return blob.includes(q);
+    });
+  }
+
+  const sort = document.getElementById("sort").value;
+  const by = {
+    "risk_desc": (a,b)=>(b.riesgo-a.riesgo)||(b.dias-a.dias),
+    "days_desc": (a,b)=>(b.dias-a.dias)||(b.riesgo-a.riesgo),
+    "cost_desc": (a,b)=>(b.costo-a.costo)||(b.riesgo-a.riesgo),
+    "id_asc": (a,b)=>a.id.localeCompare(b.id),
+  }[sort];
+  out.sort(by);
+
+  return out;
+}
+
+function renderKpis(filtered){
+  const grid = document.getElementById("kpiGrid");
+  grid.innerHTML = "";
+
+  const aprob = filtered.filter(x=>/aprobado|adjudicado/i.test(x.estado)).length;
+  const enVal = filtered.filter(x=>x.fase==="Validación").length;
+  const reprog = filtered.filter(x=>/ajust|reprogram/i.test(x.estado)).length;
+  const costo = filtered.reduce((a,b)=>a+(b.costo||0),0);
+  const rAlto = filtered.filter(x=>x.riesgo>=4).length;
+
+  const items = [
+    {label:"Requerimientos (vista)", value: filtered.length, note:`Filtro: ${selectedPhase}`},
+    {label:"Aprobados / Adjudicados", value: aprob, note:"Salida positiva del punto crítico"},
+    {label:"En validación (CCV)", value: enVal, note:"Criterio financiero activo"},
+    {label:"Ajustar / Reprogramar", value: reprog, note:"Acción correctiva"},
+    {label:"Riesgo alto (≥4)", value: rAlto, note:"Mitigación prioritaria"},
+    {label:"Costo total estimado", value: "$"+costo.toLocaleString("es-CO"), note:"Simulado (no contractual)"},
+  ];
+
+  items.forEach(k=>{
+    const card = document.createElement("div");
+    card.className = "card kpi";
+    card.innerHTML = `<div class="label">${k.label}</div><div class="value">${k.value}</div><div class="note">${k.note}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderRows(filtered){
+  const tbody = document.getElementById("rows");
+  tbody.innerHTML = "";
+  filtered.forEach(x=>{
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><strong>${x.id}</strong></td>
+      <td><span class="${badgeFase(x.fase)}">${x.fase}</span></td>
+      <td><span class="${badgeEstado(x.estado)}">${x.estado}</span></td>
+      <td>${x.tipo}</td>
+      <td>${x.criticidad}</td>
+      <td>${x.responsable}</td>
+      <td>${x.dias}</td>
+      <td>$${(x.costo||0).toLocaleString("es-CO")}</td>
+      <td><span class="${badgeRiesgo(x.riesgo)}">R${x.riesgo}</span></td>
+      <td>${x.notas||""}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderAlerts(filtered){
+  const box = document.getElementById("alerts");
+  const alerts = [];
+
+  filtered.forEach(x=>{
+    if (x.dias >= 20) alerts.push({msg:`${x.id}: ${x.dias} días en fase (${x.fase})`, cls:"b b-yellow"});
+    if (x.riesgo >= 4) alerts.push({msg:`${x.id}: Riesgo alto (R${x.riesgo})`, cls:"b b-red"});
+    if (/ajust|reprogram/i.test(x.estado)) alerts.push({msg:`${x.id}: Estado "${x.estado}"`, cls:"b b-yellow"});
+  });
+
+  box.innerHTML = alerts.length
+    ? alerts.slice(0,12).map(a=>`<div style="margin:6px 0;"><span class="${a.cls}">${a.msg}</span></div>`).join("")
+    : `<span class="b b-green">Sin alertas según reglas actuales</span>`;
+}
+
+function render(){
+  renderPills();
+  const filtered = applyFilters();
+  renderKpis(filtered);
+  renderRows(filtered);
+  renderAlerts(filtered);
+  document.getElementById("summary").textContent = `Mostrando ${filtered.length} de ${data.length} | Orden aplicado`;
+}
+
+document.getElementById("q").addEventListener("input", render);
+document.getElementById("sort").addEventListener("change", render);
+
+render();
+</script>
+
+</body>
+</html>
