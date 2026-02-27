@@ -93,21 +93,38 @@
 <div class="mermaid">
 flowchart TD
 
-A[Inicio del Proceso] --> B[Necesidades Técnicas y Logísticas]
-B --> C[Consolidación DAVAA & Brigada 32]
-C --> D[Validación Técnica & Financiera]
-D --> E{¿Viable Financieramente?}
+A[Inicio del Proceso]:::inicio
+A --> B[Necesidades Técnicas y Logísticas]:::proceso
+B --> C[Consolidación DAVAA & Brigada 32]:::proceso
+C --> D[Validación Técnica & Financiera]:::proceso
+D --> E{¿Viable Financieramente?}:::decision
 
-E -- No --> F[Ajustar / Reprogramar]
+%% RAMA NO (ROJO - HACIA ABAJO)
+E -->|No| F[Ajustar / Reprogramar]:::ajuste
+linkStyle 4 stroke:#c00000,stroke-width:3px
+
 F --> B
 
-E -- Sí --> G[Priorización]
-G --> H[Definición Tipo de Financiamiento]
-H --> I[Generación Anteproyecto]
-I --> J[Revisión DPC]
-J --> K[Presentación CENAC]
-K --> L[Monitoreo & Retroalimentación]
+%% RAMA SI (VERDE - HACIA ABAJO)
+E -->|Sí| G[Priorización]:::aprobado
+linkStyle 6 stroke:#00a651,stroke-width:3px
+
+G --> H[Definición Tipo de Financiamiento]:::proceso
+H --> I[Generación Anteproyecto]:::proceso
+I --> J[Revisión DPC]:::proceso
+J --> K[Presentación CENAC]:::proceso
+K --> L[Monitoreo & Retroalimentación]:::control
 L --> B
+
+%% COLORES INSTITUCIONALES
+
+classDef inicio fill:#1f4e79,color:#ffffff,stroke:#0d2d4d,stroke-width:2px;
+classDef proceso fill:#2e75b6,color:#ffffff,stroke:#1f4e79,stroke-width:1px;
+classDef decision fill:#c00000,color:#ffffff,stroke:#7a0000,stroke-width:2px;
+classDef ajuste fill:#ffc000,color:#000000,stroke:#d4a000,stroke-width:2px;
+classDef aprobado fill:#70ad47,color:#ffffff,stroke:#4f8a10,stroke-width:2px;
+classDef control fill:#44546a,color:#ffffff,stroke:#2f3b44,stroke-width:2px;
+
 </div>
 
 </div>
