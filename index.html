@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Recursos UH-60</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>MODELO DE GESTIÓN DE RECURSOS</h1>
+<h2>Sistema UH-60</h2>
+<h3>Ejército Nacional de Colombia</h3>
+
+<div class="mermaid">
+flowchart TD
+
+A[Inicio del Proceso] --> B[Necesidades Técnicas y Logísticas]
+B --> C[Consolidación DAVAA & Brigada 32]
+C --> D[Validación Técnica & Financiera]
+D --> E{¿Viable Financieramente?}
+
+E -- No --> F[Ajustar / Reprogramar]
+F --> B
+
+E -- Sí --> G[Priorización]
+G --> H[Definición Tipo de Financiamiento]
+H --> I[Generación Anteproyecto]
+I --> J[Revisión DPC]
+J --> K[Presentación CENAC]
+K --> L[Monitoreo & Retroalimentación]
+L --> B
+</div>
+
+</body>
+</html>
